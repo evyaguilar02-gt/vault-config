@@ -3,140 +3,132 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Dashboard · The Creator Vault</title>
+<title>Configurar Dashboards · The Creator Vault</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f0e0c;color:#e8e2d8;padding:16px;min-height:100vh}
-.wrap{max-width:860px;margin:0 auto}
-.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
-.header-title{font-size:12px;font-weight:600;color:#8a8070;text-transform:uppercase;letter-spacing:.08em}
-.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.header-date{font-size:11px;color:#524d44;font-family:monospace}
-.countdown-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:#524d44}
-.countdown-bar-bg{width:80px;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
-.countdown-bar-fill{height:100%;background:linear-gradient(90deg,#c4a05a,#e2c880);border-radius:2px;transition:width 1s linear}
-.countdown-text{font-family:monospace;min-width:32px;text-align:right}
-.refresh-btn{background:none;border:1px solid rgba(196,160,90,0.3);color:#c4a05a;font-size:11px;padding:5px 14px;border-radius:6px;cursor:pointer;font-family:inherit}
-.refresh-btn:hover{background:rgba(196,160,90,0.1)}
-.refresh-btn:disabled{opacity:.4;cursor:not-allowed}
-.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-.kpi-card{background:#1c1a16;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px 20px}
-.kpi-card.gold{border-color:rgba(196,160,90,0.3)}
-.kpi-card.amber{border-color:rgba(200,168,68,0.3)}
-.kpi-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8a8070;margin-bottom:8px}
-.kpi-value{font-size:34px;font-weight:700;color:#f5f0e8;line-height:1;font-family:monospace}
-.kpi-value.gold{color:#e2c880}
-.kpi-value.amber{color:#c8a844}
-.kpi-value.green{color:#6db88a}
-.kpi-sub{font-size:11px;margin-top:8px}
-.trend-up{color:#6db88a}
-.trend-down{color:#c07070}
-.trend-neutral{color:#524d44;font-style:italic}
-.sec-title{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8a8070;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.sec-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.07)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.donut-card{background:#1c1a16;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px}
-.donut-inner{display:flex;align-items:center;gap:16px}
-.donut-legend{flex:1}
-.donut-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px}
-.donut-item:last-child{margin-bottom:0}
-.donut-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.donut-name{flex:1;color:#c8bfa8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.donut-val{color:#e2c880;font-family:monospace;font-size:11px;white-space:nowrap}
-.client-card{background:#1c1a16;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px}
-.client-row{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.client-row:last-child{border-bottom:none}
-.client-rank{font-size:13px;color:#524d44;font-family:monospace;width:24px;flex-shrink:0}
-.client-name{flex:1;font-size:13px;color:#e8e2d8;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:8px}
-.client-bar-wrap{width:60px;background:rgba(255,255,255,0.05);border-radius:3px;height:4px;margin-right:10px;flex-shrink:0}
-.client-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#c4a05a,#e2c880)}
-.client-amount{font-size:12px;color:#e2c880;font-family:monospace;white-space:nowrap}
-.loading{text-align:center;padding:40px;color:#524d44;font-size:13px}
-.error-box{background:rgba(142,64,64,0.15);border:1px solid rgba(142,64,64,0.3);border-radius:8px;padding:12px 16px;font-size:12px;color:#c07070}
-.no-config{text-align:center;padding:40px 20px}
-.no-config h2{font-size:16px;color:#e2c880;margin-bottom:10px}
-.no-config p{font-size:13px;color:#8a8070;line-height:1.6;margin-bottom:16px}
-.no-config a{color:#c4a05a;text-decoration:none;border:1px solid rgba(196,160,90,0.3);padding:8px 20px;border-radius:8px;display:inline-block}
-.no-config a:hover{background:rgba(196,160,90,0.1)}
-.footer{text-align:center;margin-top:20px;font-size:8px;color:#2a2520;opacity:0.6;letter-spacing:.08em;font-family:monospace}
-@media(max-width:540px){.kpi-row{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.kpi-value{font-size:28px}}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f0e0c;color:#e8e2d8;padding:24px;min-height:100vh}
+.wrap{max-width:680px;margin:0 auto}
+.logo{text-align:center;margin-bottom:32px}
+.logo-title{font-size:22px;font-weight:700;color:#e8e2d8;letter-spacing:.04em}
+.logo-sub{font-size:12px;color:#8a8070;margin-top:4px;letter-spacing:.08em;text-transform:uppercase}
+.gold-rule{height:1px;background:linear-gradient(90deg,transparent,#D4A853,transparent);margin:20px 0}
+.steps-card{background:#1c1a16;border:1px solid rgba(196,160,90,0.2);border-radius:12px;padding:20px;margin-bottom:28px}
+.steps-title{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#8a8070;margin-bottom:16px}
+.step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.step:last-child{margin-bottom:0}
+.step-num{background:rgba(196,160,90,0.15);border:1px solid rgba(196,160,90,0.3);color:#e2c880;font-size:11px;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:13px;color:#c8bfa8;line-height:1.5}
+.step-text a{color:#c4a05a;text-decoration:none}
+.step-text a:hover{text-decoration:underline}
+.step-text code{background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-size:12px;color:#e2c880;font-family:monospace}
+.section{background:#1c1a16;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px;margin-bottom:20px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-icon{font-size:18px}
+.section-title{font-size:14px;font-weight:600;color:#e8e2d8}
+.section-desc{font-size:11px;color:#524d44;margin-top:2px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8a8070;margin-bottom:6px}
+.field input{width:100%;background:#0f0e0c;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;color:#e8e2d8;font-size:13px;font-family:monospace;outline:none;transition:border-color .2s}
+.field input:focus{border-color:rgba(196,160,90,0.4)}
+.field input::placeholder{color:#3a3628}
+.btn{width:100%;padding:12px;border-radius:8px;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:4px}
+.btn-gold{background:linear-gradient(135deg,#c4a05a,#e2c880);color:#0f0e0c}
+.btn-gold:hover{opacity:.9}
+.result{margin-top:14px;display:none}
+.result-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8a8070;margin-bottom:6px}
+.result-url{background:#0f0e0c;border:1px solid rgba(196,160,90,0.3);border-radius:8px;padding:10px 14px;font-size:11px;font-family:monospace;color:#e2c880;word-break:break-all;line-height:1.5}
+.copy-btn{margin-top:8px;width:100%;padding:8px;border-radius:6px;border:1px solid rgba(196,160,90,0.3);background:none;color:#c4a05a;font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s}
+.copy-btn:hover{background:rgba(196,160,90,0.1)}
+.copied{color:#6db88a;border-color:rgba(74,124,89,0.4)}
+.tip{background:rgba(196,160,90,0.08);border:1px solid rgba(196,160,90,0.15);border-left:3px solid #c4a05a;border-radius:6px;padding:10px 14px;font-size:12px;color:#c8bfa8;line-height:1.5;margin-top:12px}
+.footer{text-align:center;margin-top:32px;font-size:10px;color:#2a2520;letter-spacing:.08em}
+.footer a{color:#524d44;text-decoration:none}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="header">
-    <div class="header-title">📊 Dashboard de Ingresos · The Creator Vault</div>
-    <div class="header-right">
-      <span class="header-date" id="fecha-header"></span>
-      <div class="countdown-wrap">
-        <span class="countdown-text" id="countdown-text">5:00</span>
-        <div class="countdown-bar-bg"><div class="countdown-bar-fill" id="countdown-bar" style="width:100%"></div></div>
-      </div>
-      <button class="refresh-btn" id="refresh-btn" onclick="refreshManual()">↻ Actualizar</button>
-    </div>
+  <div class="logo">
+    <div class="logo-title">🏛️ The Creator Vault</div>
+    <div class="logo-sub">Configuración de Dashboards</div>
   </div>
-  <div id="content"><div class="loading">↻ Cargando datos desde Notion...</div></div>
-  <div class="footer">🏛️ The Creator Vault · Evelyn Aguilar · @evelynaguilar_gt</div>
-  <div class="footer" style="margin-top:3px;font-size:7px">© 2026 Evelyn Aguilar · Prohibida la venta, reproducción o redistribución sin autorización expresa.</div>
+  <div class="gold-rule"></div>
+  <div class="steps-card">
+    <div class="steps-title">Antes de configurar — sigue estos pasos</div>
+    <div class="step"><div class="step-num">1</div><div class="step-text">Asegúrate de haber <strong>duplicado la plantilla</strong> de Notion en tu workspace.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Ve a <a href="https://notion.so/my-integrations" target="blank">notion.so/my-integrations</a> → <strong>New integration</strong> → ponle un nombre → copia el token que empieza con <code>ntn</code></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">En tu <strong>Brand CRM</strong> en Notion → haz clic en <code>···</code> arriba a la derecha → <strong>Connections</strong> → conecta tu integración. Repite lo mismo en la base de <strong>Métricas</strong>.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">Abre tu <strong>Brand CRM</strong> en Notion → copia el ID de la URL (el string largo después de <code>notion.so/</code>). Repite para <strong>Métricas</strong>.</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-text">Llena los campos abajo → genera tus URLs → pégalas como <strong>/embed</strong> en Notion.</div></div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">💵</div>
+      <div><div class="section-title">Dashboard de Ingresos</div><div class="section-desc">Cobrado, por cobrar, clientes y tipo de collab</div></div>
+    </div>
+    <div class="field"><label>Token de Notion</label><input type="password" id="token-ing" placeholder="ntn_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/></div>
+    <div class="field"><label>Database ID — Brand CRM</label><input type="text" id="dbid-ing" placeholder="36dea83ddf6d80debc4ee1d159f6eb4e"/></div>
+    <button class="btn btn-gold" onclick="generarIngresos()">Generar URL del Dashboard de Ingresos</button>
+    <div class="result" id="result-ing">
+      <div class="result-label">Tu URL — pégala como /embed en Notion</div>
+      <div class="result-url" id="url-ing"></div>
+      <button class="copy-btn" id="copy-ing" onclick="copiar('url-ing','copy-ing')">Copiar URL</button>
+    </div>
+    <div class="tip">💡 Pega esta URL en Notion usando el bloque <strong>/embed</strong>. Se actualiza cada 5 minutos automáticamente.</div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📊</div>
+      <div><div class="section-title">Dashboard de Métricas</div><div class="section-desc">Seguidores, visualizaciones, audiencia y engagement</div></div>
+    </div>
+    <div class="field"><label>Token de Notion <span style="color:#524d44;font-size:10px">(puede ser el mismo si usas la misma integración)</span></label><input type="password" id="token-met" placeholder="ntn_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/></div>
+    <div class="field"><label>Database ID — Métricas</label><input type="text" id="dbid-met" placeholder="36eea83ddf6d806c95f3d02148e6cf5e"/></div>
+    <button class="btn btn-gold" onclick="generarMetricas()">Generar URL del Dashboard de Métricas</button>
+    <div class="result" id="result-met">
+      <div class="result-label">Tu URL — pégala como /embed en Notion</div>
+      <div class="result-url" id="url-met"></div>
+      <button class="copy-btn" id="copy-met" onclick="copiar('url-met','copy-met')">Copiar URL</button>
+    </div>
+    <div class="tip">💡 Pega esta URL en Notion usando el bloque <strong>/embed</strong>. Se actualiza cada 30 minutos automáticamente.</div>
+  </div>
+  <div class="gold-rule"></div>
+  <div class="footer">
+    🏛️ The Creator Vault · <a href="https://evelynaguilar.com">evelynaguilar.com</a> · @evelynaguilar_gt<br/>
+    <span style="font-size:9px;opacity:0.5">© 2026 Evelyn Aguilar · Prohibida la venta o reproducción sin autorización.</span>
+  </div>
 </div>
 <script>
-var COLORS=['#c4a05a','#6db88a','#6098d0','#a87ed4','#c8a844','#c07070','#c09050','#5a9ab0'];
-var INTERVAL_SEC=5*60;
-var remaining=INTERVAL_SEC;
-var countdownTimer=null;
-var autoTimer=null;
-var urlParams=new URLSearchParams(window.location.search);
-var USER_TOKEN=urlParams.get('token')||'';
-var USER_DBID=urlParams.get('dbid')||'';
-function fmt(n){if(!n||n===0)return '$0';return '$'+Number(n).toLocaleString('es-GT');}
-function donut(data,total,size){size=size||90;var cx=size/2,cy=size/2,r=size*0.38,stroke=size*0.14;var circ=2*Math.PI*r,offset=0,paths='';data.forEach(function(item,i){var pct=total>0?item.total/total:0;var dash=pct*circ,gap=circ-dash;paths+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+COLORS[i%COLORS.length]+'" stroke-width="'+stroke+'" stroke-dasharray="'+dash+' '+gap+'" stroke-dashoffset="'+(-(offset*circ))+'" transform="rotate(-90 '+cx+' '+cy+')" opacity="0.9"/>';offset+=pct;});return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'"><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="'+stroke+'"/>'+paths+'</svg>';}
-function render(data){
-  var html='';
-  html+='<div class="kpi-row">';
-  html+='<div class="kpi-card gold"><div class="kpi-label">💵 Cobrado · '+(data.mes||'Este mes')+'</div><div class="kpi-value gold">'+fmt(data.totalPagado)+'</div>';
-  if(data.comparativo){var c=data.comparativo;var sign=c.pct>=0?'↑':'↓';var cls=c.pct>=0?'trend-up':'trend-down';html+='<div class="kpi-sub"><span class="'+cls+'">'+sign+' '+Math.abs(c.pct)+'% vs '+fmt(c.anterior)+' mes ant.</span></div>';}
-  else{html+='<div class="kpi-sub"><span class="trend-neutral">Sin datos del mes anterior</span></div>';}
-  html+='</div>';
-  html+='<div class="kpi-card amber"><div class="kpi-label">⏳ Por cobrar</div><div class="kpi-value amber">'+fmt(data.totalPorCobrar)+'</div><div class="kpi-sub"><span class="trend-neutral">Activas sin pagar</span></div></div>';
-  html+='<div class="kpi-card"><div class="kpi-label">✅ Activas + Renovadas</div><div class="kpi-value green">'+(data.marcasActivas+data.marcasRenovadas)+'</div><div class="kpi-sub"><span class="trend-neutral">'+data.marcasActivas+' activas · '+data.marcasRenovadas+' renovadas</span></div></div>';
-  html+='</div>';
-  html+='<div class="two-col">';
-  if(data.byStatus&&data.byStatus.length>0){var tS=data.byStatus.reduce(function(s,i){return s+i.total},0);html+='<div class="donut-card"><div class="sec-title">📌 Por status</div><div class="donut-inner">'+donut(data.byStatus,tS,80)+'<div class="donut-legend">';data.byStatus.forEach(function(item,i){var pct=tS>0?Math.round(item.total/tS*100):0;html+='<div class="donut-item"><div class="donut-dot" style="background:'+COLORS[i%COLORS.length]+'"></div><div class="donut-name">'+item.nombre+'</div><div class="donut-val">'+item.total+' ('+pct+'%)</div></div>';});html+='</div></div></div>';}
-  if(data.byTipo&&data.byTipo.length>0){var tT=data.byTipo.reduce(function(s,i){return s+i.total},0);html+='<div class="donut-card"><div class="sec-title">💡 Tipo</div><div class="donut-inner">'+donut(data.byTipo,tT,80)+'<div class="donut-legend">';data.byTipo.forEach(function(item,i){var pct=tT>0?Math.round(item.total/tT*100):0;html+='<div class="donut-item"><div class="donut-dot" style="background:'+COLORS[i%COLORS.length]+'"></div><div class="donut-name">'+item.nombre+'</div><div class="donut-val">'+item.total+' ('+pct+'%)</div></div>';});html+='</div></div></div>';}
-  html+='</div>';
-  html+='<div class="two-col">';
-  if(data.byIndustria&&data.byIndustria.length>0){var tI=data.byIndustria.reduce(function(s,i){return s+i.total},0);html+='<div class="donut-card"><div class="sec-title">🏭 Por industria / servicio</div><div class="donut-inner">'+donut(data.byIndustria,tI,80)+'<div class="donut-legend">';data.byIndustria.forEach(function(item,i){var pct=tI>0?Math.round(item.total/tI*100):0;html+='<div class="donut-item"><div class="donut-dot" style="background:'+COLORS[i%COLORS.length]+'"></div><div class="donut-name">'+item.nombre+'</div><div class="donut-val">'+pct+'% · '+fmt(item.total)+'</div></div>';});html+='</div></div></div>';}
-  if(data.byCliente&&data.byCliente.length>0){var top3=data.byCliente.slice(0,3);var maxC=top3[0].total;html+='<div class="client-card"><div class="sec-title">👤 Top marcas / clientes</div>';top3.forEach(function(item,i){var pct=maxC>0?Math.round(item.total/maxC*100):0;html+='<div class="client-row"><div class="client-rank">'+(i+1)+'</div><div class="client-name">'+item.nombre+'</div><div class="client-bar-wrap"><div class="client-bar-fill" style="width:'+pct+'%"></div></div><div class="client-amount">'+fmt(item.total)+'</div></div>';});if(data.byCliente.length>3){html+='<div style="text-align:center;padding-top:8px;font-size:10px;color:#524d44">+'+(data.byCliente.length-3)+' más</div>';}html+='</div>';}
-  html+='</div>';
-  document.getElementById('content').innerHTML=html;
-  document.getElementById('fecha-header').textContent=new Date().toLocaleString('es-GT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+var BASE_ING='https://dashboard-creator-vault.vercel.app';
+var BASE_MET='https://creator-vault-metrics.vercel.app';
+function limpiarId(id){return id.replace(/-/g,'').trim();}
+function generarIngresos(){
+  var token=document.getElementById('token-ing').value.trim();
+  var dbid=limpiarId(document.getElementById('dbid-ing').value);
+  if(!token||!dbid){alert('Por favor llena el token y el Database ID.');return;}
+  if(!token.startsWith('ntn_')){alert('El token debe empezar con ntn_');return;}
+  if(dbid.length!==32){alert('El Database ID debe tener 32 caracteres.');return;}
+  var url=BASE_ING+'?token='+encodeURIComponent(token)+'&dbid='+encodeURIComponent(dbid);
+  document.getElementById('url-ing').textContent=url;
+  document.getElementById('result-ing').style.display='block';
 }
-function startCountdown(){remaining=INTERVAL_SEC;if(countdownTimer)clearInterval(countdownTimer);countdownTimer=setInterval(function(){remaining--;if(remaining<0)remaining=0;var pct=Math.max(0,(remaining/INTERVAL_SEC)*100);var bar=document.getElementById('countdown-bar');var txt=document.getElementById('countdown-text');if(bar)bar.style.width=pct+'%';if(txt){var m=Math.floor(remaining/60);var s=remaining%60;txt.textContent=m+':'+(s<10?'0':'')+s;}},1000);}
-function cargarDatos(isManual){
-  if(!USER_TOKEN||!USER_DBID){
-    document.getElementById('content').innerHTML='<div class="no-config"><h2>Dashboard no configurado</h2><p>Para ver tus datos necesitas configurar tu dashboard con tu token de Notion y el ID de tu base de datos.</p><a href="https://vault-config.vercel.app" target="_blank">Ir a configuración →</a></div>';
-    return;
-  }
-  var btn=document.getElementById('refresh-btn');
-  if(btn){btn.disabled=true;btn.textContent='↻ Cargando...';}
-  if(!isManual){document.getElementById('content').innerHTML='<div class="loading">↻ Actualizando datos...</div>';}
-  fetch('/api/dashboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:USER_TOKEN,dbid:USER_DBID})})
-  .then(function(res){return res.json();})
-  .then(function(data){
-    if(data.message){document.getElementById('content').innerHTML='<div class="error-box">⚠️ '+data.message+'</div>';return;}
-    render(data);
-    if(btn){btn.disabled=false;btn.textContent='↻ Actualizar';}
-    startCountdown();
-  })
-  .catch(function(err){
-    document.getElementById('content').innerHTML='<div class="error-box">⚠️ Error: '+err.message+'</div>';
-    if(btn){btn.disabled=false;btn.textContent='↻ Actualizar';}
-    startCountdown();
+function generarMetricas(){
+  var token=document.getElementById('token-met').value.trim();
+  var dbid=limpiarId(document.getElementById('dbid-met').value);
+  if(!token||!dbid){alert('Por favor llena el token y el Database ID.');return;}
+  if(!token.startsWith('ntn_')){alert('El token debe empezar con ntn_');return;}
+  if(dbid.length!==32){alert('El Database ID debe tener 32 caracteres.');return;}
+  var url=BASE_MET+'?token='+encodeURIComponent(token)+'&dbid='+encodeURIComponent(dbid);
+  document.getElementById('url-met').textContent=url;
+  document.getElementById('result-met').style.display='block';
+}
+function copiar(urlId,btnId){
+  var text=document.getElementById(urlId).textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var btn=document.getElementById(btnId);
+    btn.textContent='✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='Copiar URL';btn.classList.remove('copied');},2000);
   });
 }
-function refreshManual(){if(countdownTimer)clearInterval(countdownTimer);if(autoTimer)clearInterval(autoTimer);cargarDatos(true);autoTimer=setInterval(function(){cargarDatos(false);},INTERVAL_SEC*1000);}
-cargarDatos(false);
-autoTimer=setInterval(function(){cargarDatos(false);},INTERVAL_SEC*1000);
 </script>
 </body>
 </html>
